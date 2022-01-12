@@ -1,0 +1,71 @@
+
+
+@layout('layouts/app')
+
+@include('layouts/components/navbar')
+@section('content')
+    <div class="columns">
+        <div class="column is-three-fifth is-offset">
+            <h1>Lest kick the ass and do something</h1>
+            <form action="/tasks" method="post">
+                {{ csrfField() }}
+                <input type="text" name="title" placeholder="what do you wanna do" value="{{flashMessages.get('title') || ''}}">
+                <button type="submit">ADD</button>
+            </form>
+        </div>
+        @if(flashMessages.has('errors.title'))
+            <p style="color: red">
+                {{flashMessages.get('errors.title')}}
+            </p>
+        @endif
+        @if(flashMessages.has('notification'))
+            <p style="color: green">
+                {{flashMessages.get('notification')}}
+            </p>
+        @endif
+        
+        <div class="div">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>title</th>
+                        <th>Created At</th>
+                        <th>        </th>
+                        <th>updated At</th>
+                        <th>        </th>
+                        <th>Completed</th>
+                    </tr>
+                    @each(task in tasks)
+                    <tr>
+                        <td>{{task.title}}</td>
+                        <td>{{task.createdAt}}</td>
+                        <td>        </td>
+                        <td>{{task.updatedAt}}</td>
+                        <td>        </td>
+                        <td>
+                            {{task.completed ? "Done" : " Nope"}}
+                            <form action="{{`/tasks/${task.id}`}}" method="post">
+                                {{ csrfField() }}
+                                <label for="completed">
+                                    <input type="checkbox" name="completed" onchange="this.form.submit()" {{task.completed ? "checked" : ""}}>
+                                </label>
+                            </form>
+                        </td>
+                        <td>
+                            <button>
+                                <a href="/task/{{task.id}}">Update</a>
+                            </button>
+                        </td>
+                        <td>
+                            <form action="{{`/tasks/${task.id}/delete?_method=DELETE`}}" method="post">
+                                {{ csrfField() }}
+                                    <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endsection

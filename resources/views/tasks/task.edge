@@ -1,0 +1,9 @@
+@include('layouts/components/navbar')
+
+<form action="{{`/task/${task.id}`}}" method="post">
+    {{ csrfField() }}
+    <input type="text" name="title" value="{{task.title}}" value="{{flashMessages.get('title') || ''}}">
+    <input type="checkbox" name="completed" {{task.completed ? "checked" : ""}}>
+    <button type="submit">Update</button>
+</form>
+<link rel="stylesheet" href="/">

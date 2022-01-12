@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdonisJS - A fully featured web framework for Node.js</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a href="/about">About</a>
+  <a href="{{route('routes')}}">Routes</a>
+
+  @set('title', 'Wellcome to my Adonis Page')
+
+  <h3>{{title}}</h3>
+  <form action="PayslipServlet" method="get">
+          name:    <input type="text" name="name" id="name"><br/>
+          <br>
+          <input type="button" value="Submit" onClick="pr()">
+          <p id="result"></p>
+        </form>
+
+        <script>
+          function pr() {
+            document.getElementById("result").innerHTML = "welcome to pur page sweet "+document.getElementById('name').value;
+          }
+        </script>
+</body>
+</html>
