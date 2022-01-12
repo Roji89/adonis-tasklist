@@ -16,7 +16,7 @@ node ace invoke @adonisjs/lucid
 node ace make:model Todo
 node ace make:migration Todos
 
-
+create auth:
 npm i @adonisjs/auth@alpha
 node ace invoke @adonisjs/auth
 
