@@ -26,3 +26,10 @@ node ace migration:run
 protection from attack:
 npm install @adonisjs/shield@alpha
 node ace invoke @adonisjs/shield
+
+node ace make:middleware Guest
+
+do a migration to change the tables
+node ace migration:rollback
+if i want to put in zero i can do:
+node ace migration:rollback --batch 0

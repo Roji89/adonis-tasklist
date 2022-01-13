@@ -1,0 +1,48 @@
+
+@include('layouts/components/navbar')
+
+<h1>Welcome to Tasks-List app </h1>
+<h3>Lest register</h3>
+
+
+<form action="/register" method="post">
+    {{ csrfField()}}
+    <div class="field">
+        <label class="label">Username</label>
+        <div class="control">
+          <input class="input" type="text" name="username" placeholder="choose an username" value="{{flashMessages.get('username') || ''}}">
+        </div>
+    </div>
+    @if(flashMessages.has('errors.username'))
+            <p style="color: red">
+                {{flashMessages.get('errors.username')}}
+            </p>
+    @endif
+    <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" type="text" name="email" placeholder="choose an email" value="{{flashMessages.get('email') || ''}}">
+        </div>
+    </div>
+    @if(flashMessages.has('errors.email'))
+            <p style="color: red">
+                {{flashMessages.get('errors.email')}}
+            </p>
+    @endif
+    <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input class="input" type="password" name="password" placeholder="choose a password" value="{{flashMessages.get('password') || ''}}">
+        </div>
+    </div>
+    @if(flashMessages.has('errors.password'))
+            <p style="color: red">
+                {{flashMessages.get('errors.password')}}
+            </p>
+    @endif
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" type="submit">Submit</button>
+        </div>
+      </div>
+</form>

@@ -5,8 +5,9 @@
         <div class="navabar-brand">
             <a href="/" class="navbar-item">Tasks-List</a>
             @if(auth.isLoggedIn)
-                <p>welcome{{ auth.user.username}}</p>
-                <a href="">Logout</a>
+                <p>welcome {{ auth.user.username}}</p>
+                <a href="/logout" onclick="event.preventDefault(); document.getElementById('logout').submit();">Logout</a>
+                <form id="logout" action="/logout" method="post">{{ csrfField() }}</form>
             @else
                 <a href="/register" class="navbar-item">Register</a>
                 <a href="/login" class="navbar-item">Login</a>
