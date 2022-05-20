@@ -6,11 +6,14 @@ npx create-adonis-ts-app adonis-taskList
 server start:
 node ace serve --watch
 
+list of commands:
+node ace
+
 create controller:
 node ace make:controller HomeController
 
-npm i  @adonisjs/lucid@alpha
 create db:
+npm i @adonisjs/lucid@alpha
 node ace invoke @adonisjs/lucid
 
 node ace make:model Todo
